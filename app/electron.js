@@ -3,8 +3,8 @@
 const electron = require('electron')
 const path = require('path')
 
-const walk = require('walk')
-const ipcMain = electron.ipcMain
+const fileBrowser = require('./fileBrowser')
+
 const app = electron.app
 const BrowserWindow = electron.BrowserWindow
 
@@ -44,26 +44,9 @@ function createWindow () {
     mainWindow = null
   })
 
-  handleSubmissions()
+  fileBrowser()
 
   console.log('mainWindow opened')
-}
-
-function handleSubmissions () {
-  ipcMain.on('signal', (event, dir) => {
-    const walker = walk.walk(dir[0])
-    const files = []
-
-    walker.on('file', (root, stat, next) => {
-      files.push(`${root}/${stat.name}`)
-      next()
-    })
-
-    walker.on('end', _ => {
-      console.log(files)
-      event.sender.send('signal-answer', files)
-    })
-  })
 }
 
 app.on('ready', createWindow)

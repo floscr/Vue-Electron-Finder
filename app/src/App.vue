@@ -1,7 +1,10 @@
 <template>
   <div>
-    <router-view></router-view>
-    {{ files }}
+    <ul>
+      <li v-for="file in files">
+        {{ file }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -19,7 +22,7 @@
     store,
 
     mounted () {
-      ipcRenderer.send('signal', ['/tmp'])
+      ipcRenderer.send('signal', ['~/Downloads'])
       ipcRenderer.on('signal-answer', (event, files) => {
         this.files = files
       })
