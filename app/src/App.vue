@@ -40,6 +40,9 @@
 </script>
 
 <style>
+  html {
+    font-family: -apple-system, Helvetica, Arial, sans-serif;
+  }
   html, body {
     margin: 0;
     padding: 0;
@@ -56,13 +59,14 @@
     height: 100%;
   }
 
-  .filelist {
-    user-select: none;
+  .filelist li {
+    display: block;
+    padding: 0.2em;
   }
 
   .filelist li:focus {
     outline: none;
     color: white;
-    background-color: blue;
+    background-color: ActiveBorder;
   }
 </style>
