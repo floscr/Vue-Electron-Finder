@@ -1,8 +1,11 @@
 <template>
   <div>
     <ul>
-      <li v-for="file in files">
-        {{ file }}
+      <li v-for="file in files" @click="open">
+        <ul class="filelist">
+          <li v-for="dir in file.dirs" value="dir" tabindex="0">{{ dir }}</li>
+          <li v-for="file in file.files" value="file" tabindex="0">{{ file }}</li>
+        </ul>
       </li>
     </ul>
   </div>
@@ -19,13 +22,47 @@
       }
     },
 
+    methods: {
+      open () {
+
+      }
+    },
+
     store,
 
     mounted () {
-      ipcRenderer.send('signal', ['~/Downloads'])
-      ipcRenderer.on('signal-answer', (event, files) => {
-        this.files = files
+      ipcRenderer.send('READ_DIR', '~/Downloads')
+      ipcRenderer.on('DIR_STAT', (event, files) => {
+        this.files.push(files)
       })
     }
   }
 </script>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 0;
+    bottom: 0;
+  }
+
+  select {
+    height: 100%;
+  }
+
+  .filelist {
+    user-select: none;
+  }
+
+  .filelist li:focus {
+    outline: none;
+    color: white;
+    background-color: blue;
+  }
+</style>

@@ -6,15 +6,23 @@ const fs = require('fs')
 const path = require('path')
 
 module.exports = function () {
-  ipcMain.on('signal', (event, dir) => {
-    const srcpath = expandHomeDir(dir[0])
-    // const walker = walk.walk(expandHomeDir(dir[0]))
-    const files = fs.readdirSync(srcpath).filter(file => {
-      return fs.statSync(path.join(srcpath, file))
+  ipcMain.on('READ_DIR', (event, dir) => {
+    const srcpath = expandHomeDir(dir)
+
+    const src = fs.readdirSync(srcpath)
+
+    const dirs = src.filter(file => {
+      return fs.statSync(path.join(srcpath, file)).isDirectory()
     })
 
-    console.log(files)
+    const files = src.filter(file => {
+      return fs.statSync(path.join(srcpath, file)).isFile()
+    })
 
-    event.sender.send('signal-answer', files)
+    event.sender.send('DIR_STAT', {
+      src: src,
+      dirs: dirs,
+      files: files
+    })
   })
 }
