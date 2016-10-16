@@ -57,6 +57,7 @@
     min-height: 100%;
     overflow-x: scroll;
     overflow-y: scroll;
+    -webkit-user-select: none;
   }
 
   .filelist {
@@ -85,6 +86,10 @@
     position: absolute;
     margin-top: 1px;
     right: 0.34em;
+  }
+
+  .filelist li {
+    cursor: default;
   }
 
   .filelist li:focus {
