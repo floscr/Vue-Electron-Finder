@@ -16,7 +16,7 @@ module.exports = function () {
     })
 
     const files = src.filter(file => {
-      if (file === '.DS_STORE') return
+      if (file === '.DS_Store') return
       return fs.statSync(path.join(srcpath, file)).isFile()
     })
 
