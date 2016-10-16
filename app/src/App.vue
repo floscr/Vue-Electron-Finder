@@ -59,6 +59,7 @@
   .filelist {
     background-color: white;
     border-right: 1px solid #DDDDDD;
+    overflow-x: hidden;
   }
 
   .filelist li {
