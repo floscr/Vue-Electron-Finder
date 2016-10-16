@@ -64,7 +64,7 @@
 
   .filelist li {
     display: block;
-    padding: 0.2em;
+    padding: 0.25em 0.5em 0.25em 0.3em;
     padding-right: 1.5em;
     vertical-align: middle;
   }
