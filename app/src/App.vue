@@ -79,7 +79,7 @@
     background-color: ActiveBorder;
   }
 
-  .filelist__dir i {
+  .fa-folder {
     color: #75CEF7;
   }
 

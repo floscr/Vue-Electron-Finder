@@ -8,7 +8,7 @@
         value="dir"
         @click="browseDir(file.src, dir, index)"
         tabindex="0">
-        <i class="material-icons">folder</i>
+        <span class="fa fa-folder"></span>
         {{ dir }}
       </li>
       <li class="filelist__file" v-for="file in file.files" value="file" tabindex="0">
