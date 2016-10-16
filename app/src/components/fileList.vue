@@ -8,8 +8,9 @@
         value="dir"
         @click="browseDir(file.src, dir, index)"
         tabindex="0">
-        <span class="fa fa-folder"></span>
+        <i class="fa fa-folder"></i>
         {{ dir }}
+        <i class="filelist__dir__arrow fa fa-caret-right" aria-hidden="true"></i>
       </li>
       <li class="filelist__file" v-for="file in file.files" value="file" tabindex="0">
         <icon :file="file"></icon>

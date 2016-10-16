@@ -73,10 +73,24 @@
     color: #9ea6a9;
   }
 
+  .filelist__dir {
+    position: relative;
+  }
+
+  .filelist__dir__arrow {
+    position: absolute;
+    margin-top: 1px;
+    right: 0.34em;
+  }
+
   .filelist li:focus {
     outline: none;
     color: white;
     background-color: ActiveBorder;
+  }
+
+  .filelist li:focus i {
+    color: white;
   }
 
   .fa-folder {
