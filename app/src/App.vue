@@ -68,9 +68,9 @@
     vertical-align: middle;
   }
 
-  .material-icons {
+  .material-icons, .fa {
     font-size: 1.05em;
-    color: #c3c6c7;
+    color: #9ea6a9;
   }
 
   .filelist li:focus {

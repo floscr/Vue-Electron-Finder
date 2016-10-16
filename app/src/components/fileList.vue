@@ -12,15 +12,16 @@
         {{ dir }}
       </li>
       <li class="filelist__file" v-for="file in file.files" value="file" tabindex="0">
-          <i class="material-icons">insert_drive_file</i>
-          {{ file }}
-        </li>
+        <icon :file="file"></icon>
+        {{ file }}
+      </li>
     </ul>
   </li>
 </ul>
 </template>
 
 <script>
+  import Icon from './Icon.vue'
   import { ipcRenderer } from 'electron'
   import _ from 'lodash'
 
@@ -28,6 +29,12 @@
     data () {
       return {
         files: []
+      }
+    },
+
+    computed: {
+      extension () {
+        console.log(this)
       }
     },
 
@@ -48,6 +55,10 @@
       ipcRenderer.on('DIR_STAT', (event, files) => {
         this.files.push(files)
       })
+    },
+
+    components: {
+      Icon
     }
   }
 </script>
