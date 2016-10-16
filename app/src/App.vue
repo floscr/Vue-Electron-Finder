@@ -1,17 +1,20 @@
 <template>
   <div>
+    <header-bar></header-bar>
     <file-list></file-list>
   </div>
 </template>
 
 <script>
+  import headerBar from './components/headerBar.vue'
   import fileList from './components/fileList.vue'
   import store from 'src/vuex/store'
 
   export default {
     store,
     components: {
-      fileList
+      fileList,
+      headerBar,
     }
   }
 </script>
