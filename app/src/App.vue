@@ -1,45 +1,17 @@
 <template>
   <div>
-    <ul>
-      <li class="column" v-for="file in files" @click="open">
-        <ul class="filelist">
-          <li class="filelist__dir" v-for="dir in file.dirs" value="dir" tabindex="0">
-            <i class="material-icons">folder</i>
-            {{ dir }}
-          </li>
-          <li class="filelist__file" v-for="file in file.files" value="file" tabindex="0">
-            <i class="material-icons">insert_drive_file</i>
-            {{ file }}
-          </li>
-        </ul>
-      </li>
-    </ul>
+    <file-list></file-list>
   </div>
 </template>
 
 <script>
+  import fileList from './components/fileList.vue'
   import store from 'src/vuex/store'
-  import { ipcRenderer } from 'electron'
 
   export default {
-    data () {
-      return {
-        files: []
-      }
-    },
-
-    methods: {
-      open () {
-      }
-    },
-
     store,
-
-    mounted () {
-      ipcRenderer.send('READ_DIR', '~/Downloads')
-      ipcRenderer.on('DIR_STAT', (event, files) => {
-        this.files.push(files)
-      })
+    components: {
+      fileList
     }
   }
 </script>
@@ -61,8 +33,8 @@
   }
 
   body {
-    overflow: hidden;
     background-color: #F7F7F7;
+    overflow: hidden;
   }
 
   ul {
@@ -78,7 +50,10 @@
 
   .column {
     display: flex;
-    height: 100%;
+    flex-flow: row;
+    min-height: 100%;
+    overflow-x: scroll;
+    overflow-y: scroll;
   }
 
   .filelist {

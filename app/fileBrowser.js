@@ -21,7 +21,7 @@ module.exports = function () {
     })
 
     event.sender.send('DIR_STAT', {
-      src: src,
+      src: srcpath,
       dirs: dirs,
       files: files
     })
